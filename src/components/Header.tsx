@@ -48,23 +48,23 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-terminal-bg/95 backdrop-blur-sm border-b border-gray-700">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <Terminal className="w-6 h-6 text-terminal-green" />
-            <span className="font-mono text-terminal-green font-bold text-lg">
+          <div className="flex items-center gap-2 min-w-0">
+            <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-terminal-green flex-shrink-0" />
+            <span className="font-mono text-terminal-green font-bold text-sm sm:text-base lg:text-lg truncate">
               AL-MAHDI@dev:~$
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`font-mono text-sm transition-colors duration-200 ${
+                className={`font-mono text-xs lg:text-sm transition-colors duration-200 whitespace-nowrap ${
                   activeSection === item.id 
                     ? 'text-terminal-green' 
                     : 'text-terminal-text hover:text-terminal-green'
@@ -75,7 +75,7 @@ const Header = () => {
             ))}
             <button
               onClick={exportToPDF}
-              className="btn-primary text-xs no-print"
+              className="btn-primary text-xs no-print whitespace-nowrap"
             >
               Export CV
             </button>
@@ -84,21 +84,21 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-terminal-text hover:text-terminal-green transition-colors"
+            className="md:hidden text-terminal-text hover:text-terminal-green transition-colors flex-shrink-0"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-700">
-            <nav className="flex flex-col gap-4">
+          <div className="md:hidden py-4 border-t border-gray-700 bg-terminal-bg">
+            <nav className="flex flex-col gap-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left font-mono text-sm transition-colors duration-200 ${
+                  className={`text-left font-mono text-sm transition-colors duration-200 py-2 ${
                     activeSection === item.id 
                       ? 'text-terminal-green' 
                       : 'text-terminal-text hover:text-terminal-green'
@@ -109,7 +109,7 @@ const Header = () => {
               ))}
               <button
                 onClick={exportToPDF}
-                className="btn-primary text-xs w-fit no-print"
+                className="btn-primary text-xs w-fit no-print mt-2"
               >
                 Export CV
               </button>

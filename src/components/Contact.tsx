@@ -62,8 +62,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-950">
-      <div className="container mx-auto max-w-4xl">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
+      <div className="container mx-auto max-w-4xl w-full">
         <div className="mb-12">
           <h2 className="section-title">Get In Touch</h2>
           <div className="font-mono text-terminal-green text-sm mb-4">
@@ -71,25 +71,25 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             <div className="terminal-window">
               <div className="terminal-header">
                 <div className="terminal-dot bg-red-500"></div>
                 <div className="terminal-dot bg-yellow-500"></div>
                 <div className="terminal-dot bg-green-500"></div>
-                <span className="text-terminal-text text-xs ml-4">contact.info</span>
+                <span className="text-terminal-text text-xs ml-2 sm:ml-4">contact.info</span>
               </div>
               
-              <div className="terminal-content space-y-4">
+              <div className="terminal-content space-y-3 sm:space-y-4">
                 {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 p-3 rounded border border-gray-700 hover:border-terminal-green transition-colors">
-                    <div className="p-2 bg-terminal-green/10 rounded">
-                      <item.icon className="w-5 h-5 text-terminal-green" />
+                  <div key={index} className="flex items-center gap-3 sm:gap-4 p-3 rounded border border-gray-700 hover:border-terminal-green transition-colors">
+                    <div className="p-2 bg-terminal-green/10 rounded flex-shrink-0">
+                      <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-terminal-green" />
                     </div>
-                    <div>
-                      <div className="text-terminal-gray text-sm font-mono">
+                    <div className="min-w-0 flex-1">
+                      <div className="text-terminal-gray text-xs sm:text-sm font-mono">
                         {item.label}:
                       </div>
                       {item.href ? (
@@ -97,12 +97,12 @@ const Contact = () => {
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-terminal-cyan hover:text-cyan-400 transition-colors font-mono text-sm"
+                          className="text-terminal-cyan hover:text-cyan-400 transition-colors font-mono text-xs sm:text-sm break-all"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <div className="text-terminal-text font-mono text-sm">
+                        <div className="text-terminal-text font-mono text-xs sm:text-sm">
                           {item.value}
                         </div>
                       )}
@@ -117,16 +117,16 @@ const Contact = () => {
                 <div className="terminal-dot bg-red-500"></div>
                 <div className="terminal-dot bg-yellow-500"></div>
                 <div className="terminal-dot bg-green-500"></div>
-                <span className="text-terminal-text text-xs ml-4">availability.status</span>
+                <span className="text-terminal-text text-xs ml-2 sm:ml-4">availability.status</span>
               </div>
               
               <div className="terminal-content">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                   <div className="w-3 h-3 bg-terminal-green rounded-full animate-pulse"></div>
-                  <span className="text-terminal-green font-mono">Available for opportunities</span>
+                  <span className="text-terminal-green font-mono text-sm sm:text-base">Available for opportunities</span>
                 </div>
                 
-                <div className="space-y-2 text-sm text-terminal-text">
+                <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-terminal-text">
                   <p>🎯 Étudiant ingénieur recherchant stage/opportunités</p>
                   <p>💼 Intéressé par les postes Junior en développement</p>
                   <p>🌍 Disponible pour stages et projets</p>
@@ -137,29 +137,29 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="terminal-window">
+          <div className="terminal-window order-1 lg:order-2">
             <div className="terminal-header">
               <div className="terminal-dot bg-red-500"></div>
               <div className="terminal-dot bg-yellow-500"></div>
               <div className="terminal-dot bg-green-500"></div>
-              <span className="text-terminal-text text-xs ml-4">message_form.jsx</span>
+              <span className="text-terminal-text text-xs ml-2 sm:ml-4">message_form.jsx</span>
             </div>
             
             <div className="terminal-content">
               {isSubmitted ? (
-                <div className="text-center py-8">
-                  <CheckCircle className="w-16 h-16 text-terminal-green mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-terminal-green mb-2">
+                <div className="text-center py-6 sm:py-8">
+                  <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-terminal-green mx-auto mb-4" />
+                  <h3 className="text-lg sm:text-xl font-semibold text-terminal-green mb-2">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-terminal-text">
+                  <p className="text-terminal-text text-sm sm:text-base">
                     Thank you for reaching out. I'll get back to you soon.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div>
-                    <label className="block text-terminal-green font-mono text-sm mb-2">
+                    <label className="block text-terminal-green font-mono text-xs sm:text-sm mb-2">
                       Name:
                     </label>
                     <input
@@ -168,13 +168,13 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-gray-800 border border-gray-600 rounded px-4 py-2 text-terminal-text focus:border-terminal-green focus:outline-none font-mono"
+                      className="w-full bg-gray-800 border border-gray-600 rounded px-3 sm:px-4 py-2 text-terminal-text focus:border-terminal-green focus:outline-none font-mono text-sm"
                       placeholder="Your name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-terminal-green font-mono text-sm mb-2">
+                    <label className="block text-terminal-green font-mono text-xs sm:text-sm mb-2">
                       Email:
                     </label>
                     <input
@@ -183,13 +183,13 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-gray-800 border border-gray-600 rounded px-4 py-2 text-terminal-text focus:border-terminal-green focus:outline-none font-mono"
+                      className="w-full bg-gray-800 border border-gray-600 rounded px-3 sm:px-4 py-2 text-terminal-text focus:border-terminal-green focus:outline-none font-mono text-sm"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-terminal-green font-mono text-sm mb-2">
+                    <label className="block text-terminal-green font-mono text-xs sm:text-sm mb-2">
                       Message:
                     </label>
                     <textarea
@@ -197,8 +197,8 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows={5}
-                      className="w-full bg-gray-800 border border-gray-600 rounded px-4 py-2 text-terminal-text focus:border-terminal-green focus:outline-none font-mono resize-vertical"
+                      rows={4}
+                      className="w-full bg-gray-800 border border-gray-600 rounded px-3 sm:px-4 py-2 text-terminal-text focus:border-terminal-green focus:outline-none font-mono resize-vertical text-sm"
                       placeholder="Your message..."
                     />
                   </div>
@@ -206,7 +206,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded font-mono transition-all duration-200 ${
+                    className={`w-full flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-6 rounded font-mono transition-all duration-200 text-sm sm:text-base ${
                       isSubmitting
                         ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
                         : 'bg-terminal-green text-black hover:bg-green-400'
@@ -231,11 +231,11 @@ const Contact = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-terminal-gray font-mono text-sm">
+          <p className="text-terminal-gray font-mono text-xs sm:text-sm">
             $ echo "Let's build something amazing together!"
           </p>
           <div className="mt-2">
-            <span className="text-terminal-green font-mono">Let's build something amazing together!</span>
+            <span className="text-terminal-green font-mono text-xs sm:text-sm">Let's build something amazing together!</span>
           </div>
         </div>
       </div>

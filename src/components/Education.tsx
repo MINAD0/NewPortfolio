@@ -47,8 +47,8 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="py-20 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <section id="education" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-4xl w-full">
         <div className="mb-12">
           <h2 className="section-title">Education & Certifications</h2>
           <div className="font-mono text-terminal-green text-sm mb-4">
@@ -56,31 +56,31 @@ const Education = () => {
           </div>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Education */}
           <div className="terminal-window">
             <div className="terminal-header">
               <div className="terminal-dot bg-red-500"></div>
               <div className="terminal-dot bg-yellow-500"></div>
               <div className="terminal-dot bg-green-500"></div>
-              <span className="text-terminal-text text-xs ml-4">degree.info</span>
+              <span className="text-terminal-text text-xs ml-2 sm:ml-4">degree.info</span>
             </div>
             
             <div className="terminal-content">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-terminal-green/10 border border-terminal-green rounded-lg">
-                  <GraduationCap className="w-8 h-8 text-terminal-green" />
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="p-2 sm:p-3 bg-terminal-green/10 border border-terminal-green rounded-lg self-center sm:self-start">
+                  <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-terminal-green" />
                 </div>
                 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 text-center sm:text-left">
                     {education.degree}
                   </h3>
-                  <div className="space-y-2 text-terminal-text">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">{education.institution}</span>
+                  <div className="space-y-1 sm:space-y-2 text-terminal-text text-center sm:text-left">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                      <span className="font-semibold text-sm sm:text-base">{education.institution}</span>
                     </div>
-                    <div className="flex flex-wrap gap-4 text-sm text-terminal-gray">
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-xs sm:text-sm text-terminal-gray">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {education.period}
@@ -94,15 +94,15 @@ const Education = () => {
                 </div>
               </div>
 
-              <p className="text-terminal-text leading-relaxed mb-4">
+              <p className="text-terminal-text leading-relaxed mb-4 text-sm sm:text-base">
                 {education.description}
               </p>
 
               <div>
-                <h4 className="text-terminal-green font-mono text-sm mb-3">Highlights:</h4>
+                <h4 className="text-terminal-green font-mono text-xs sm:text-sm mb-3">Highlights:</h4>
                 <ul className="space-y-2">
                   {education.highlights.map((highlight, index) => (
-                    <li key={index} className="text-terminal-text text-sm flex items-start gap-2">
+                    <li key={index} className="text-terminal-text text-xs sm:text-sm flex items-start gap-2">
                       <span className="text-terminal-green mt-1">▸</span>
                       {highlight}
                     </li>
@@ -118,32 +118,32 @@ const Education = () => {
               <div className="terminal-dot bg-red-500"></div>
               <div className="terminal-dot bg-yellow-500"></div>
               <div className="terminal-dot bg-green-500"></div>
-              <span className="text-terminal-text text-xs ml-4">certifications.json</span>
+              <span className="text-terminal-text text-xs ml-2 sm:ml-4">certifications.json</span>
             </div>
             
-            <div className="terminal-content space-y-6">
-              <div className="flex items-center gap-2 mb-6">
-                <Award className="w-6 h-6 text-terminal-green" />
-                <h3 className="text-lg font-semibold text-white">Professional Certifications</h3>
+            <div className="terminal-content space-y-4 sm:space-y-6">
+              <div className="flex items-center gap-2 mb-4 sm:mb-6">
+                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-terminal-green" />
+                <h3 className="text-base sm:text-lg font-semibold text-white">Professional Certifications</h3>
               </div>
 
               {certifications.map((cert, index) => (
-                <div key={index} className="border-l-4 border-terminal-cyan pl-6 relative">
+                <div key={index} className="border-l-4 border-terminal-cyan pl-4 sm:pl-6 relative">
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-terminal-cyan rounded-full"></div>
                   
-                  <div className="bg-gray-900 rounded-lg p-4 border border-gray-700">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
+                  <div className="bg-gray-900 rounded-lg p-3 sm:p-4 border border-gray-700">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4 mb-3">
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-1">
+                        <h4 className="text-base sm:text-lg font-semibold text-white mb-1">
                           {cert.title}
                         </h4>
-                        <div className="text-sm text-terminal-gray">
+                        <div className="text-xs sm:text-sm text-terminal-gray">
                           <span className="font-medium">{cert.provider}</span> • {cert.issuer}
                         </div>
                       </div>
                       
-                      <div className="text-right">
-                        <div className="text-terminal-cyan font-mono text-sm">
+                      <div className="text-left sm:text-right">
+                        <div className="text-terminal-cyan font-mono text-xs sm:text-sm">
                           {cert.date}
                         </div>
                         <div className="text-xs text-terminal-gray font-mono">
@@ -152,7 +152,7 @@ const Education = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-3">
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-3">
                       {cert.skills.map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
@@ -165,7 +165,7 @@ const Education = () => {
 
                     <a
                       href={cert.link}
-                      className="inline-flex items-center gap-2 text-terminal-cyan hover:text-cyan-400 transition-colors font-mono text-sm"
+                      className="inline-flex items-center gap-2 text-terminal-cyan hover:text-cyan-400 transition-colors font-mono text-xs sm:text-sm"
                     >
                       <ExternalLink className="w-4 h-4" />
                       View Credential
@@ -177,12 +177,12 @@ const Education = () => {
           </div>
         </div>
 
-        <div className="text-center mt-8">
-          <p className="text-terminal-gray font-mono text-sm">
+        <div className="text-center mt-6 sm:mt-8">
+          <p className="text-terminal-gray font-mono text-xs sm:text-sm">
             $ echo "Continuous learning is key to staying current..."
           </p>
           <div className="mt-2">
-            <span className="text-terminal-green font-mono">Continuous learning is key to staying current...</span>
+            <span className="text-terminal-green font-mono text-xs sm:text-sm">Continuous learning is key to staying current...</span>
           </div>
         </div>
       </div>
