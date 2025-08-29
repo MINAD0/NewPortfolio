@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, CheckCircle } from 'lucide-react';
+import { sendEmail, initEmailJS, type ContactFormData } from '../services/emailService';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,22 +10,37 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Initialize EmailJS when component mounts
+  React.useEffect(() => {
+    initEmailJS();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const success = await sendEmail(formData as ContactFormData);
       
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    }, 2000);
+      if (success) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        setSubmitError('Failed to send message. Please try again or contact me directly via email.');
+      }
+    } catch (error) {
+      setSubmitError('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -153,11 +169,19 @@ const Contact = () => {
                     Message Sent Successfully!
                   </h3>
                   <p className="text-terminal-text">
-                    Thank you for reaching out. I'll get back to you soon.
+                    Thank you for reaching out. I'll get back to you within 24 hours.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitError && (
+                    <div className="bg-red-900/20 border border-red-500 rounded p-3">
+                      <p className="text-red-400 text-sm font-mono">
+                        Error: {submitError}
+                      </p>
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-terminal-green font-mono text-sm mb-2">
                       Name:
@@ -215,7 +239,7 @@ const Contact = () => {
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
-                        Sending...
+                        Sending Message...
                       </>
                     ) : (
                       <>
@@ -230,6 +254,30 @@ const Contact = () => {
           </div>
         </div>
 
+        {/* Setup Instructions */}
+        <div className="mt-8 terminal-window">
+          <div className="terminal-header">
+            <div className="terminal-dot bg-red-500"></div>
+            <div className="terminal-dot bg-yellow-500"></div>
+            <div className="terminal-dot bg-green-500"></div>
+            <span className="text-terminal-text text-xs ml-4">setup_instructions.md</span>
+          </div>
+          
+          <div className="terminal-content">
+            <div className="bg-yellow-900/20 border border-yellow-500 rounded p-4">
+              <h4 className="text-yellow-400 font-mono text-sm mb-2">⚠️ Setup Required</h4>
+              <p className="text-terminal-text text-sm mb-3">
+                To enable email functionality, you need to configure EmailJS:
+              </p>
+              <ol className="text-terminal-text text-sm space-y-1 list-decimal list-inside">
+                <li>Create a free account at <a href="https://www.emailjs.com/" target="_blank" className="text-terminal-cyan hover:text-cyan-400">emailjs.com</a></li>
+                <li>Create an email service (Gmail, Outlook, etc.)</li>
+                <li>Create an email template with variables: from_name, from_email, message, to_name</li>
+                <li>Update the configuration in <code className="bg-gray-800 px-1 rounded">src/services/emailService.ts</code></li>
+              </ol>
+            </div>
+          </div>
+        </div>
         <div className="text-center mt-12">
           <p className="text-terminal-gray font-mono text-sm">
             $ echo "Let's build something amazing together!"
