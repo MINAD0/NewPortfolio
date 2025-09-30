@@ -143,10 +143,10 @@ const Contact = () => {
                 </div>
                 
                 <div className="space-y-2 text-sm text-terminal-text">
-                  <p>🎯 Étudiant ingénieur recherchant stage/opportunités</p>
-                  <p>💼 Intéressé par les postes Junior en développement</p>
-                  <p>🌍 Disponible pour stages et projets</p>
-                  <p>⚡ Diplôme prévu en 2025</p>
+                  <p>🎯 Ingénieur diplômé, à la recherche de nouvelles opportunités</p>
+                  <p>💼 Intéressé par des postes Junior/Entry‑level en développement</p>
+                  <p>🌍 Disponible pour CDI/CDD, missions et projets</p>
+                  <p>⚡ Diplôme obtenu en 2025</p>
                 </div>
               </div>
             </div>
