@@ -44,8 +44,8 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <section id="experience" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-4xl w-full">
         <div className="mb-12">
           <h2 className="section-title">Professional Experience</h2>
           <div className="font-mono text-terminal-green text-sm mb-4">
@@ -58,30 +58,30 @@ const Experience = () => {
             <div className="terminal-dot bg-red-500"></div>
             <div className="terminal-dot bg-yellow-500"></div>
             <div className="terminal-dot bg-green-500"></div>
-            <span className="text-terminal-text text-xs ml-4">career.log</span>
+            <span className="text-terminal-text text-xs ml-2 sm:ml-4">career.log</span>
           </div>
           
-          <div className="terminal-content space-y-6">
+          <div className="terminal-content space-y-4 sm:space-y-6">
             {experiences.map((exp) => (
-              <div key={exp.id} className="border-l-4 border-terminal-green pl-6 relative">
+              <div key={exp.id} className="border-l-4 border-terminal-green pl-4 sm:pl-6 relative">
                 <div className="absolute -left-2 top-0 w-4 h-4 bg-terminal-green rounded-full"></div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {/* Log Header */}
-                  <div className="font-mono text-sm">
+                  <div className="font-mono text-xs sm:text-sm">
                     <span className="text-terminal-gray">[{exp.timestamp}]</span>{' '}
                     <span className="text-terminal-green">{exp.level}:</span>{' '}
-                    <span className="text-terminal-cyan">Started position at {exp.company}</span>
+                    <span className="text-terminal-cyan break-words">Started position at {exp.company}</span>
                   </div>
 
                   {/* Position Details */}
-                  <div className="bg-gray-900 rounded-lg p-4 border border-gray-700">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                  <div className="bg-gray-900 rounded-lg p-3 sm:p-4 border border-gray-700">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
                       <div>
-                        <h3 className="text-xl font-semibold text-white mb-1">
+                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1">
                           {exp.position}
                         </h3>
-                        <div className="flex items-center gap-4 text-sm text-terminal-gray">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-terminal-gray">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             {exp.duration}
@@ -102,15 +102,15 @@ const Experience = () => {
                       </div>
                     </div>
 
-                    <p className="text-terminal-text mb-4 leading-relaxed">
+                    <p className="text-terminal-text mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
                       {exp.description}
                     </p>
 
-                    <div className="space-y-3">
-                      <h4 className="text-terminal-green font-mono text-sm">Key Achievements:</h4>
+                    <div className="space-y-2 sm:space-y-3">
+                      <h4 className="text-terminal-green font-mono text-xs sm:text-sm">Key Achievements:</h4>
                       <ul className="space-y-1">
                         {exp.achievements.map((achievement, index) => (
-                          <li key={index} className="text-terminal-text text-sm flex items-start gap-2">
+                          <li key={index} className="text-terminal-text text-xs sm:text-sm flex items-start gap-2">
                             <span className="text-terminal-green mt-1">▸</span>
                             {achievement}
                           </li>
@@ -118,7 +118,7 @@ const Experience = () => {
                       </ul>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mt-3 sm:mt-4">
                       {exp.technologies.map((tech, index) => (
                         <span
                           key={index}
@@ -133,7 +133,7 @@ const Experience = () => {
               </div>
             ))}
 
-            <div className="font-mono text-terminal-gray text-sm pt-4">
+            <div className="font-mono text-terminal-gray text-xs sm:text-sm pt-4">
               $ echo "Ready for the next challenge..."
             </div>
           </div>

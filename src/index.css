@@ -30,15 +30,15 @@
   }
   
   .terminal-header {
-    @apply bg-gray-800 px-4 py-2 rounded-t-lg flex items-center gap-2;
+    @apply bg-gray-800 px-2 sm:px-4 py-2 rounded-t-lg flex items-center gap-2;
   }
   
   .terminal-dot {
-    @apply w-3 h-3 rounded-full;
+    @apply w-2 h-2 sm:w-3 sm:h-3 rounded-full;
   }
   
   .terminal-content {
-    @apply p-4 font-mono text-sm;
+    @apply p-3 sm:p-4 font-mono text-xs sm:text-sm;
   }
   
   .typing-animation::after {
@@ -47,23 +47,23 @@
   }
   
   .skill-tag {
-    @apply px-3 py-1 bg-gray-800 border border-gray-600 rounded text-sm transition-all duration-200 hover:border-terminal-green hover:bg-gray-700;
+    @apply px-2 sm:px-3 py-1 bg-gray-800 border border-gray-600 rounded text-xs sm:text-sm transition-all duration-200 hover:border-terminal-green hover:bg-gray-700;
   }
   
   .project-card {
-    @apply bg-gray-900 border border-gray-700 rounded-lg p-6 transition-all duration-300 hover:border-terminal-green hover:shadow-lg hover:shadow-terminal-green/10;
+    @apply bg-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:border-terminal-green hover:shadow-lg hover:shadow-terminal-green/10;
   }
   
   .btn-primary {
-    @apply bg-terminal-green text-black px-6 py-2 rounded font-semibold transition-all duration-200 hover:bg-green-400;
+    @apply bg-terminal-green text-black px-4 sm:px-6 py-2 rounded font-semibold transition-all duration-200 hover:bg-green-400 text-sm sm:text-base;
   }
   
   .btn-secondary {
-    @apply border border-terminal-cyan text-terminal-cyan px-6 py-2 rounded transition-all duration-200 hover:bg-terminal-cyan hover:text-black;
+    @apply border border-terminal-cyan text-terminal-cyan px-4 sm:px-6 py-2 rounded transition-all duration-200 hover:bg-terminal-cyan hover:text-black text-sm sm:text-base;
   }
   
   .section-title {
-    @apply text-3xl font-bold text-terminal-green font-mono mb-8;
+    @apply text-2xl sm:text-3xl font-bold text-terminal-green font-mono mb-6 sm:mb-8;
   }
   
   .loading-bar {

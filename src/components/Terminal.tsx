@@ -150,19 +150,19 @@ const Terminal = ({ onClose }: { onClose: () => void }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-gray-900 border border-terminal-green rounded-lg w-full max-w-4xl h-96 max-h-[80vh] flex flex-col">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-gray-900 border border-terminal-green rounded-lg w-full max-w-4xl h-80 sm:h-96 max-h-[90vh] sm:max-h-[80vh] flex flex-col">
         {/* Terminal Header */}
-        <div className="flex items-center justify-between p-3 border-b border-gray-700">
+        <div className="flex items-center justify-between p-2 sm:p-3 border-b border-gray-700">
           <div className="flex items-center gap-2">
-            <TerminalIcon className="w-4 h-4 text-terminal-green" />
-            <span className="text-terminal-green font-mono text-sm">
+            <TerminalIcon className="w-4 h-4 text-terminal-green flex-shrink-0" />
+            <span className="text-terminal-green font-mono text-xs sm:text-sm truncate">
               almahdi@portfolio-terminal
             </span>
           </div>
           <button
             onClick={onClose}
-            className="text-terminal-gray hover:text-terminal-green transition-colors"
+            className="text-terminal-gray hover:text-terminal-green transition-colors flex-shrink-0"
           >
             <X className="w-4 h-4" />
           </button>
@@ -171,26 +171,26 @@ const Terminal = ({ onClose }: { onClose: () => void }) => {
         {/* Terminal Output */}
         <div
           ref={outputRef}
-          className="flex-1 p-4 overflow-y-auto font-mono text-sm text-terminal-text"
+          className="flex-1 p-2 sm:p-4 overflow-y-auto font-mono text-xs sm:text-sm text-terminal-text"
         >
           {output.map((line, index) => (
-            <div key={index} className="whitespace-pre-wrap">
+            <div key={index} className="whitespace-pre-wrap break-words">
               {line}
             </div>
           ))}
         </div>
 
         {/* Terminal Input */}
-        <div className="border-t border-gray-700 p-4">
+        <div className="border-t border-gray-700 p-2 sm:p-4">
           <form onSubmit={handleSubmit} className="flex items-center gap-2">
-            <span className="text-terminal-green font-mono">$</span>
+            <span className="text-terminal-green font-mono flex-shrink-0">$</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="flex-1 bg-transparent text-terminal-text font-mono outline-none caret-terminal-green"
+              className="flex-1 bg-transparent text-terminal-text font-mono outline-none caret-terminal-green text-xs sm:text-sm min-w-0"
               placeholder="Type a command..."
             />
           </form>
